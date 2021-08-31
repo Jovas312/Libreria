@@ -15,10 +15,13 @@ Including another URLconf
 """
 
 
+from Sistema_Administracion.settings import STATIC_URL
 from Index.views import detalleLibro
 from Index.views import Index_Libreria, register
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +30,6 @@ urlpatterns = [
     path("register", register, name="register"),
     
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

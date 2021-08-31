@@ -1,14 +1,13 @@
 from django.shortcuts import get_object_or_404, render
-from Index.models import Libros
+from .models import Libros, Autores
 from django.template import context
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 # Create your views here.
 def Index_Libreria(request):
-    no_libros = Libros.objects.count()
     libros = Libros.objects.order_by("id")
-    return render(request, "principal.html", {"no_libros":no_libros, "libros":libros})
+    return render(request, "principal.html", {"libros":libros})
 
 def detalleLibro(request, id):
     #persona = Persona.objects.get(pk=id)

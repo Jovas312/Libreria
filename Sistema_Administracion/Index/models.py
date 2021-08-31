@@ -11,13 +11,16 @@ class Autores(models.Model):
 class Libros(models.Model):
     titulo = models.CharField(max_length=100)
     autor = models.ForeignKey(Autores, on_delete=models.SET_NULL, null=True)
+    descripcion = models.TextField()
     disponibles = models.IntegerField()
     precio = models.IntegerField()
     categoria = models.CharField(max_length=100)
-    imagen = models.ImageField(upload_to='uploads/% Y/% m/% d/', height_field=None, width_field=None, max_length=100)
+    imagen = models.ImageField(upload_to='productos', null=True)
 
     def __str__(self):
         return f"""Titulo {self.titulo}
+        Autor: {self.autor}
+        Descripción: {self.descripcion}
         Libros disponibles: {self.disponibles}
         Precio: {self.precio}
         Categoria: {self.categoria}
