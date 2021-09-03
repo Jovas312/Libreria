@@ -8,13 +8,19 @@ class Autores(models.Model):
     def __str__(self):
         return f"Autor: {self.nombre} {self.apellido}"
 
+class Categorias(models.Model):
+    categoria = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"Categoria: {self.categoria}"
+
 class Libros(models.Model):
     titulo = models.CharField(max_length=100)
     autor = models.ForeignKey(Autores, on_delete=models.SET_NULL, null=True)
     descripcion = models.TextField()
     disponibles = models.IntegerField()
     precio = models.IntegerField()
-    categoria = models.CharField(max_length=100)
+    categoria = models.ForeignKey(Categorias, on_delete=models.SET_NULL, null=True)
     imagen = models.ImageField(upload_to='productos', null=True)
 
     def __str__(self):
