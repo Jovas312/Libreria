@@ -36,10 +36,17 @@
             {% endif %}
         </ul>
     </nav>
-    <section class="Libreria_Section">
-        <main class="Main_Destacados">
-            {% load humanize %}
-            <h2 class="Mas_Vendidos">Mas vendidos</h2>
+    <div>
+        {% load humanize %}
+        <h1>Más vendidos</h1>
+        <div class="Contenedor">
+            <div class="Contenedor_de Frente">
+                <div>FRONT SIDE</div>
+            </div>
+            <div class="Contenedor_de Atras">
+                <div>BACK SIDE</div>
+            </div>
+        </div>
             {% for libro in libros %}
             <section class="Contenedor_Libros">
                 <div class="Producto">
@@ -59,8 +66,7 @@
                 </div>
             </section>
             {% endfor %}
-        </main>
-    </section>
+        </div>
 </body>
 
 </html>
