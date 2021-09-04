@@ -1,6 +1,25 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+.Barra_Navegacion ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.Barra_Navegacion li{
+    float: right;
+}
+
+.Barra_Navegacion li a{
+    position: relative;
+    display: block;
+    color: #222;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 0;
+}
+
+li a:hover:before,
+li a:focus:before{
+    transform: scale(1);
 }
