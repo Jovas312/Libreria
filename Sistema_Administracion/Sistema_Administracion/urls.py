@@ -15,9 +15,11 @@ Including another URLconf
 """
 
 
-from Sistema_Administracion.settings import STATIC_URL
+from Index.views import registro
+from django.urls.conf import include
+from .settings import STATIC_URL
 from Index.views import detalleLibro
-from Index.views import Index_Libreria, register
+from Index.views import Index_Libreria
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
@@ -27,7 +29,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", Index_Libreria, name="principal"),
     path("detalle", detalleLibro, name="detalle"),
-    path("register", register, name="register"),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("registro/", registro, name="registro"),
     
 ]
 

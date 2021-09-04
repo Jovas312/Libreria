@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404, render
-from .models import Libros, Autores
-from django.template import context
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import get_object_or_404, redirect, render
+from .admin import Libros
+from .forms import CustomUserCreationForm
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 # Create your views here.
@@ -14,13 +14,18 @@ def detalleLibro(request, id):
     libro = get_object_or_404(Libros, pk=id)
     return render(request, "detalle_libro.html", {"libro":libro})
 
-def register(request):
+def registro(request):
+    data = {
+        "form":CustomUserCreationForm()
+    }
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            messages.success(request, f"Usuario {username} creado")
-    else:
-        form = UserCreationForm()
-    context = {"form":form}
-    return render(request, "register.html", context)
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Registro exitoso")
+            #Redirigir al home
+            return redirect(to="principal")
+        data["form"] = formulario
+    return render(request, "registration/registro.html", data)

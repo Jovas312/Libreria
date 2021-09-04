@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 STATICFILES_DIRS=['C:/Users/jovan/Desktop/Administracion_Tienda/Sistema_Administracion/Index/static']
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Application definition
 
