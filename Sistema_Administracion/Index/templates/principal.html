@@ -3,7 +3,10 @@
 
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static '/Index.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2? family=Urbanist&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/Index/css/Index.css' %}" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +14,14 @@
 </head>
 
 <body>
-    <nav class="Barra_Navegacion">
-        <ul>
+    <script src="{% static '/Index/plugins/jquery-3.6.0.min' %}"></script>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div class="Contenedor_Vinculos">
+        <h2 class="Menu_Txt">Menu</h2>
+        <ul class="Vinculos">
+            <li>
+                <a href="#">@{{ user.username }}</a>
+            </li>
             <li>
                 <a href="">Inicio</a>
             </li>
@@ -23,9 +32,6 @@
             <li>
                 <a href="{% url 'logout' %}">Logout</a>
             </li>
-            <li>
-                <a href="#">@{{ user.username }}</a>
-            </li>
             {% else %}
             <li>
                 <a href="{% url 'login' %}">Login</a>
@@ -35,38 +41,42 @@
             </li>
             {% endif %}
         </ul>
-    </nav>
-    <div>
+    </div>
+    <div class="Contenedor_Total">
+        <div class="Barra_Nav">
+            <div class="Rectangulo"></div>
+            <div class="Rectangulo2"></div>
+            <div class="Rectangulo3"></div>
+        </div>
         {% load humanize %}
         <h1>Más vendidos</h1>
+        {% for libro in libros %}
         <div class="Contenedor">
             <div class="Contenedor_de Frente">
-                <div>FRONT SIDE</div>
-            </div>
-            <div class="Contenedor_de Atras">
-                <div>BACK SIDE</div>
-            </div>
-        </div>
-            {% for libro in libros %}
-            <section class="Contenedor_Libros">
                 <div class="Producto">
-                    <div class="img libro">
+                    <div class="Imagen">
                         {% if libro.imagen %}
-                        <img src="{{libro.imagen.url}}" alt="" class="libro img" />
+                        <img src="{{libro.imagen.url}}" alt="" class="Libro_IMG">
                         {% endif %}
                     </div>
-                    <div class="Descripcion_Producto">
-                        <h3 class="Nombre_Producto">{{libro.titulo | capfirst}}</h3>
-                        <p class="Autor">{{libro.autor | title}}</p>
-                        <div class="Box-Precio">
-                            <span class="Precio_Producto"><b>${{libro.precio | intcomma}}</b></span>
-                        </div>
+                    <div class="Titulo_Libro">
+                        <h3>{{libro.titulo | capfirst}}</h3>
                     </div>
-                    <a href=""><i class="Añadir_Carrito"></i></a>
                 </div>
-            </section>
-            {% endfor %}
+            </div>
+            <div class="Contenedor_de Atras">
+                <div class="Descripción">
+                    <h2 class="Descripcion_Libro">{{libro.descripcion}}</h2>
+                    <h3 class="Nombre_Autor">{{libro.autor | title}}</h3>
+                </div>
+                <div class="Precio">
+                    <span class="Precio_Libro"><b>${{libro.precio | intcomma}}</b></span>
+                </div>
+            </div>
         </div>
+        {% endfor %}
+    </div>
+    <script src="{% static '/Index/js/abrir.js' %}"></script>
 </body>
 
 </html>

@@ -1,0 +1,140 @@
+body{
+    font-family: 'Urbanista', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.Contenedor_Vinculos{
+    overflow-x: hidden;
+    width: 250px;
+    position: absolute;
+    height: 100%;
+    background-image: linear-gradient(43deg, #41c9d0 0%, #50a8c8 20%);
+    color: #fff;
+    outline: 1px solid #2a2a2a;
+}
+
+.Contenedor_Vinculos h2{
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background: #2a2a2a;
+}
+
+.Contenedor_Vinculos ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Contenedor_Vinculos a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.Contenedor_Vinculos li{
+    outline: 1px solid #2a2a2a;
+    transition: all 0.3s;
+}
+
+.Contenedor_Vinculos li:hover{
+    background: #444;
+    border-left: 5px solid #eee;
+}
+
+.Contenedor{
+    perspective: 70rem;
+    position: relative;
+    height: 20rem;
+    max-width: 250px;
+    margin: 2rem;
+    box-shadow: none;
+    background: none;
+}
+
+.Contenedor_de{
+    height: 15rem;
+    border-radius: 15px;
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    padding: 2rem;
+    color: white;
+}
+
+.Contenedor_de.Atras{
+    transform: rotateY(-180deg);
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.Contenedor_de.Frente{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+}
+
+.Contenedor:hover .Contenedor_de.Frente{
+    transform: rotateY(180deg);
+}
+
+.Contenedor:hover .Contenedor_de.Atras{
+    transform: rotateY(0deg);
+}
+
+.Libro_IMG{
+    width: 150px;
+    height: 200px;
+}
+
+.Descripcion_Libro{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 297px;
+}
+
+.Rectangulo{
+    width: 40px;
+    height: 6px;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.Rectangulo2{
+    width: 40px;
+    height: 6px;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.Rectangulo3{
+    width: 40px;
+    height: 6px;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+    border-radius: 10px;
+}
+
+.Contenedor_Total{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #eee;
+    padding: 30px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.Barra_Nav{
+    cursor: pointer;
+}
+
+.Abrir{
+    transform: translateX(250px);
+}
