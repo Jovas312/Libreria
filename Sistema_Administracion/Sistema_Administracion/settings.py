@@ -32,6 +32,7 @@ STATICFILES_DIRS=['C:/Users/jovan/Desktop/Administracion_Tienda/Sistema_Administ
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 # Application definition
 
@@ -46,8 +47,11 @@ INSTALLED_APPS = [
     'Index.apps.IndexConfig',
     'colorfield',
     'django.contrib.humanize',
+    'crispy_forms',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 X_FRAME_OPTIONS='SAMEORIGIN'
 

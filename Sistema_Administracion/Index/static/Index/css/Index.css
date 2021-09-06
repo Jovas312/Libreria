@@ -95,7 +95,7 @@ body{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 297px;
+    width: 100%;
 }
 
 .Rectangulo{
@@ -137,4 +137,12 @@ body{
 
 .Abrir{
     transform: translateX(250px);
+}
+
+.Contenedor_Total h1{
+    text-align: center;
+}
+
+.Contenedor_Total .Titulo_Libro{
+    text-align: center;
 }
