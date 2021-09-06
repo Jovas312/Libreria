@@ -65,10 +65,12 @@
                 </div>
             </div>
             <div class="Contenedor_de Atras">
-                <div class="Descripción">
-                    <h2 class="Descripcion_Libro">{{libro.descripcion}}</h2>
-                    <h3 class="Nombre_Autor">{{libro.autor | title}}</h3>
-                </div>
+                <h3 class="Nombre_Autor">{{libro.autor | title}}</h3>
+                <h3 class="Año">{{libro.año}}</h3>
+                <h3 class="Editor">{{libro.editor}}</h3>
+                <h3 class="Idioma">{{libro.idioma}}</h3>
+                <h3 class="Categoria">{{libro.categoria}}</h3>
+                <div class="Disponibles">{{libro.disponibles}}</div>
                 <div class="Precio">
                     <span class="Precio_Libro"><b>${{libro.precio | intcomma}}</b></span>
                 </div>
