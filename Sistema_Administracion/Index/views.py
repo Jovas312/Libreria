@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .admin import Libros
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, LibroForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
@@ -13,6 +13,16 @@ def detalleLibro(request, id):
     #persona = Persona.objects.get(pk=id)
     libro = get_object_or_404(Libros, pk=id)
     return render(request, "detalle_libro.html", {"libro":libro})
+
+def nuevoLibro(request):
+    if request.method == "POST":
+        formaLibro = LibroForm(request.POST)
+        if formaLibro.is_valid():
+            formaLibro.save()
+            return redirect("principal.html")
+    else:
+        formaLibro = LibroForm()
+    return render(request, "registration/nuevo.html", {"formaLibro":formaLibro})
 
 def registro(request):
     data = {

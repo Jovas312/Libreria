@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 
+from Index.views import nuevoLibro
 from Index.views import registro
 from django.urls.conf import include
 from .settings import STATIC_URL
@@ -31,6 +32,7 @@ urlpatterns = [
     path("detalle", detalleLibro, name="detalle"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("registro/", registro, name="registro"),
+    path("nuevo/", nuevoLibro, name="nuevo"),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

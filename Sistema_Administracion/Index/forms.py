@@ -4,7 +4,7 @@ from django.forms import ModelForm, widgets
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class PersonaForm(ModelForm):
+class LibroForm(ModelForm):
    class Meta:
        model = Libros
        fields = "__all__"
