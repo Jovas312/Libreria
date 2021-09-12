@@ -23,9 +23,30 @@
             </button>
             <div id="MenuNavegacion" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@{{ user.username }}</a>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">@{{ user.username }}</a>
+                        <ul class="dropdown-menu">
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                            {% endif %}
+                        </ul>
                     </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">@User</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'registro' %}">Resgistrarse</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="">Inicio</a>
                     </li>
@@ -34,17 +55,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'nuevo' %}">Agregar Libro</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'registro' %}">Resgistrarse</a>
                     </li>
                     {% endif %}
                 </ul>
