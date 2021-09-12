@@ -3,9 +3,7 @@
 
 <head>
     {% load static %}
-    <link rel="stylesheet" href="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2? family=Urbanist&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static '/Index/css/Index.css' %}" type="text/css">
     <meta charset="UTF-8">
@@ -17,41 +15,43 @@
 <body>
     <script src="{% static '/Index/plugins/jquery-3.6.0.min' %}"></script>
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <div class="Contenedor_Vinculos">
-        <h2 class="Menu_Txt">Menu</h2>
-        <ul class="Vinculos">
-            <li>
-                <a href="#">@{{ user.username }}</a>
-            </li>
-            <li>
-                <a href="">Inicio</a>
-            </li>
-            <li>
-                <a href="">Contacto</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li>
-                <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            <li>
-                <a href="{% url 'nuevo' %}">Agregar Libro</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="{% url 'login' %}">Login</a>
-            </li>
-            <li>
-                <a href="{% url 'registro' %}">Resgistrarse</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-    <div class="Contenedor_Total">
-        <div class="Barra_Nav">
-            <div class="Rectangulo"></div>
-            <div class="Rectangulo2"></div>
-            <div class="Rectangulo3"></div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">library programing</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="MenuNavegacion" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@{{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contacto</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nuevo' %}">Agregar Libro</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Resgistrarse</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="Contenedor_Total">
         {% load humanize %}
         <h1>Más vendidos</h1>
         {% for libro in libros %}
@@ -64,7 +64,7 @@
                         {% endif %}
                     </div>
                     <div class="Titulo_Libro">
-                        <h3>{{libro.titulo | capfirst}}</h3>
+                        <h4>{{libro.titulo | capfirst}}</h3>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
         </div>
         {% endfor %}
     </div>
-    <script src="{% static '/Index/js/abrir.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
 </html>
