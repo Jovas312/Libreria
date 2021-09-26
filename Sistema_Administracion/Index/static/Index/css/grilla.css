@@ -1,0 +1,5 @@
+.Contenedor{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    grid-template-rows: 1fr;
+}

@@ -1,48 +1,3 @@
-.Contenedor{
-    display: flex;
-    width: 100%; 
-    perspective: 70rem;
-    position: relative;
-    height: 20rem;
-    max-width: 250px;
-    margin: 6rem 3rem;
-    box-shadow: none;
-    background: none;
-    float: left;
-}
-
-.Contenedor_de{
-    height: 120%;
-    border-radius: 15px;
-    transition: all 0.8s ease;
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem;
-    color: white;
-}
-
-.Contenedor_de.Atras{
-    transform: rotateY(-180deg);
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-}
-
-.Contenedor_de.Frente{
-    background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
-}
-
-.Contenedor:hover .Contenedor_de.Frente{
-    transform: rotateY(180deg);
-}
-
-.Contenedor:hover .Contenedor_de.Atras{
-    transform: rotateY(0deg);
-}
-
 .Contenedor_Total{
     width: 100%;
     height: max-content;
@@ -57,21 +12,87 @@
     text-align: center;
 }
 
-.Contenedor_Total .Titulo_Libro{
-    text-align: center;
+.Libros{
+    max-width: 280px;
     display: flex;
-    width: 100%;
-    height: auto;
-    margin-top: -10px;
-    justify-content: center;
+    flex-flow: column;
+    border-radius: 6px;
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.2);
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;    
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
 }
 
-.Contenedor_Total .Libro_IMG{
-    display: flex;
+.Libros:hover{
+    box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.2);
+}
+
+.Libros > img{
     width: 100%;
-    height: 270px;
-    margin-top: -10px;
-    border-radius: 5%;
-    overflow: hidden;
-    justify-content: center;
+    object-fit: cover;
+}
+
+.Informacion{
+    border-top: 1px solid rgb(230, 230, 230);
+    padding: 1em;
+    display: flex;
+    flex-flow: column;
+}
+
+.Informacion * + *{
+    margin-bottom: 0.5em;
+}
+
+.Categoria{
+    background-color: rgb(52, 131, 250);
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    max-width: max-content;
+    padding: 0 0.2em;
+    border-radius: 3px;
+}
+
+.Precio{
+    font-size: 1.5em;
+}
+
+.Autor{
+    color: rgb(0, 166, 80);
+}
+
+.Informacion, .Idioma{
+    font-weight: 300;
+}
+
+.Autor, .Informacion, .Idioma{
+    font-size: 0.9em;
+}
+
+.Calificacion, .Idioma{
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    opacity: 0;
+}
+
+.Libros:hover .Calificacion, .Libros:hover .Idioma{
+    opacity: 1;
+}
+
+.Calificacion{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+}
+
+.Calificacion > *{
+    margin: 0;
+}
+
+.Categoria, .Calificacion{
+    font-size: 0.8em;
+}
+
+.Calificacion > span:first-child{
+    color: rgb(52, 131, 250);
 }
