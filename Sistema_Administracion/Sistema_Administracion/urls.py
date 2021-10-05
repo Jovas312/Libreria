@@ -18,8 +18,8 @@ Including another URLconf
 from Index.views import nuevoLibro
 from Index.views import registro
 from django.urls.conf import include
+from Index.views import informacion
 from .settings import STATIC_URL
-from Index.views import detalleLibro
 from Index.views import Index_Libreria
 from django.contrib import admin
 from django.urls import path
@@ -29,10 +29,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", Index_Libreria, name="principal"),
-    path("detalle", detalleLibro, name="detalle"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("registro/", registro, name="registro"),
     path("nuevo/", nuevoLibro, name="nuevo"),
+    path("informacion/<int:id>", informacion),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

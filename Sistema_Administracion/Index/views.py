@@ -9,11 +9,6 @@ def Index_Libreria(request):
     libros = Libros.objects.order_by("id")
     return render(request, "principal.html", {"libros":libros})
 
-def detalleLibro(request, id):
-    #persona = Persona.objects.get(pk=id)
-    libro = get_object_or_404(Libros, pk=id)
-    return render(request, "detalle_libro.html", {"libro":libro})
-
 def nuevoLibro(request):
     if request.method == "POST":
         formaLibro = LibroForm(request.POST)
@@ -39,3 +34,8 @@ def registro(request):
             return redirect(to="principal")
         data["form"] = formulario
     return render(request, "registration/registro.html", data)
+
+def informacion(request, id):
+    #libro = Libros.objects.get(pk=id)
+    libro = get_object_or_404(Libros, pk=id)
+    return render(request, "registration/informacion.html", {"libro":libro})
