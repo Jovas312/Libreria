@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2? family=Urbanist&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/Index/css/grilla.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/Index/css/Index.css' %}" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Libreria</title>
 </head>
+
 <body>
-    <h1>Hola</h1>
+    <script src="{% static '/Index/plugins/jquery-3.6.0.min' %}"></script>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
+        <div class="container-fluid">
+            <a href="{% url 'principal' %}" class="navbar-brand">library programing</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="MenuNavegacion" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-3">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">@{{user.username}}</a>
+                        <ul class="dropdown-menu">
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">@User</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'registro' %}">Resgistrarse</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contacto</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nuevo' %}">Agregar Libro</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="Contenedor_Total">
+        <div>
+            <img src="{{libro.imagen.url}}" alt="" class="Libro_IMG">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static '/Index/js/friconix.js' %}"> </script>
 </body>
+
 </html>

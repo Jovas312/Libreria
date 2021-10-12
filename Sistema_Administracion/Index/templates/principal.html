@@ -69,8 +69,8 @@
         <h1>Más vendidos</h1>
         <div class="Contenedor">
             {% for libro in libros %}
+            <a href="informacion/{{libro.id}}" class="Links">
         <div class="Libros">
-            <a href="informacion/{{libro.id}}"></a>
                 {% if libro.imagen %}
                 <img src="{{libro.imagen.url}}" alt="" class="Libro_IMG">
                 {% endif %}
@@ -93,6 +93,7 @@
                 </div>
             </div>
             {% endfor %}
+        </a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

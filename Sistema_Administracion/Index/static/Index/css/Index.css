@@ -12,6 +12,10 @@
     text-align: center;
 }
 
+.Links{
+    text-decoration: none;
+}
+
 .Libros{
     max-width: 280px;
     display: flex;
@@ -31,6 +35,10 @@
 .Libros > img{
     width: 100%;
     object-fit: cover;
+}
+
+.Titulo{
+    color: rgb(25, 25, 25);
 }
 
 .Informacion{
@@ -55,6 +63,7 @@
 
 .Precio{
     font-size: 1.5em;
+    color: rgb(25, 25, 25);
 }
 
 .Autor{
