@@ -19,7 +19,7 @@
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand">library programing</a>
+            <a href="{% url 'principal' %}" class="navbar-brand"><img class="Log" src="{% static '/Index/img/Logo.png' %}" alt="" width="100" height="40"></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,10 +50,10 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="">Inicio</a>
+                        <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contacto</a>
+                        <a class="nav-link" href="https://wa.link/pvv18v">Contacto</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">

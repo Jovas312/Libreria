@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2? family=Urbanist&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static '/Index/css/grilla.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static '/Index/css/Index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/Index/css/informacion.css' %}" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,8 @@
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
         <div class="container-fluid">
-            <a href="{% url 'principal' %}" class="navbar-brand">library programing</a>
+            <a href="{% url 'principal' %}" class="navbar-brand"><img class="Log"
+                    src="{% static '/Index/img/Logo.png' %}" alt="" height="40" width="100"></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,7 +56,7 @@
                         <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contacto</a>
+                        <a class="nav-link" href="https://wa.link/pvv18v">Contacto</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -66,14 +68,31 @@
         </div>
     </nav>
     <div class="Contenedor_Total">
-        <div>
+        {% load humanize %}
+        <div class="Info">
             <img src="{{libro.imagen.url}}" alt="" class="Libro_IMG">
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static '/Index/js/friconix.js' %}"> </script>
+        <div class="Text">
+            <span class="Cate">{{libro.categoria}}</span>
+            <span class="Price"><b>${{libro.precio | intcomma}}</b></span>
+            <span class="Aut">{{libro.autor}}</span>
+            <span class="Title">{{libro.titulo | capfirst}}</span>
+            <div class="Calif">
+                <span>
+                    <i class="fi-xnsuxl-star-solid"></i>
+                    <i class="fi-xnsuxl-star-solid"></i>
+                    <i class="fi-xnsuxl-star-solid"></i>
+                    <i class="fi-xnsuxl-star-solid"></i>
+                    <i class="fi-xnsuxl-star-solid"></i>
+                </span>
+                <span>1999</span>
+            </div>
+            <span class="Idiom">Idioma: {{libro.idioma}}</span>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static '/Index/js/friconix.js' %}"> </script>
 </body>
 
 </html>
