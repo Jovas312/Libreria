@@ -1,4 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
+
+from Index.Carrito import Carrito
 from .admin import Libros
 from .forms import CustomUserCreationForm, LibroForm
 from django.contrib.auth import authenticate, login
@@ -39,3 +41,26 @@ def informacion(request, id):
     #libro = Libros.objects.get(pk=id)
     libro = get_object_or_404(Libros, pk=id)
     return render(request, "registration/informacion.html", {"libro":libro})
+
+def agregar_libro(request, libro_id):
+    carrito = Carrito(request)
+    libro = Libros.objects.get(id=libro_id)
+    carrito.agregar(libro)
+    return redirect("principal")
+
+def eliminar_libro(request, libro_id):
+    carrito = Carrito(request)
+    libro = Libros.objects.get(id=libro_id)
+    carrito.elimiar(libro)
+    return redirect("principal")
+
+def restar_libro(request, libro_id):
+    carrito = Carrito(request)
+    libro = Libros.objects.get(id=libro_id)
+    carrito.restar(libro)
+    return redirect("principal")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("principal")

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+</head>
+<body>
+    <div class="alert alert-primary" role="alert">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="row" colspan="3" class="text-center">Carrito</th>
+                </tr>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if request.session.carrito.items %}
+                {% for key, value in request.session.carrito.items %}
+                <tr>
+                    <td>{{value.nombre}}</td>
+                    <td>{{value.precio}}</td>
+                    <td>{{value.acumulado}}
+                        <a href="{% url 'Add' value.libro_id %}" class="badge btn btn-dark badge-dark">+</a>
+                        <a href="{% url 'Sub' value.libro_id %}" class="badge btn btn-dark badge-dark">-</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3">
+                        <div class="alert alert-danger text-center">Sin productos</div>
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <th scope="row">Total:</th>
+                    <td colspan="2">$ {{total_carrito}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+    <div class="row text-center">
+        <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a></div>
+        <div class="col-6"><a href="#" class="btn btn-success">Guardar</a></div>
+    </div>
+</body>
+</html>

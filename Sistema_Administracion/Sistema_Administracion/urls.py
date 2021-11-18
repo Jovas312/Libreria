@@ -19,6 +19,10 @@ from Index.views import nuevoLibro
 from Index.views import registro
 from django.urls.conf import include
 from Index.views import informacion
+from Index.views import agregar_libro
+from Index.views import eliminar_libro
+from Index.views import restar_libro
+from Index.views import limpiar_carrito
 from .settings import STATIC_URL
 from Index.views import Index_Libreria
 from django.contrib import admin
@@ -33,6 +37,10 @@ urlpatterns = [
     path("registro/", registro, name="registro"),
     path("nuevo/", nuevoLibro, name="nuevo"),
     path("informacion/<int:id>", informacion),
+    path("agregar/<int:libro_id>/", agregar_libro, name="Add"),
+    path("eliminar/<int:libro_id>/", eliminar_libro, name="Del"),
+    path("restar/<int:libro_id>/", restar_libro, name="Sub"),
+    path("limpiar/", limpiar_carrito, name="CLS"),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

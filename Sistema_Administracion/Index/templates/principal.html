@@ -59,6 +59,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'nuevo' %}">Agregar Libro</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Ir al carrito</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -90,6 +93,7 @@
                         <span>1999</span>
                     </div>
                     <span class="Idioma">Idioma: {{libro.idioma}}</span>
+                    <a href="{% url 'Add' libro.id %}" class="btn btn-primary">Agregar al carrito</a>
                 </div>
             </div>
             {% endfor %}
@@ -100,6 +104,7 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static '/Index/js/friconix.js' %}"> </script>
+    <script src="https://kit.fontawesome.com/a42ff22e69.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
